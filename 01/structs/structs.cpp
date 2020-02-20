@@ -21,6 +21,12 @@ struct Car
     double kilometersReached;
     double fuelConsumed;
     EngineType engineType;
+
+    ~Car()
+    {
+        std::cout << "Destructing " << (void*) model << std::endl;
+        delete[] model;
+    }
 };
 
 Car createCar(const char* model, double price, double kilometers, double fuel, EngineType type)
@@ -35,22 +41,22 @@ Car createCar(const char* model, double price, double kilometers, double fuel, E
     car.fuelConsumed = fuel;
     car.engineType = type;
 
+    std::cout << "Model's address: " << (void*) (car.model) << std::endl;
+
     return car;
 }
 
 double calculateFuelPer100km(Car& car)
 {
-    return (car.fuelConsumed / car.kilometersReached)  * 100;
+    return (car.fuelConsumed / car.kilometersReached) * 100;
 }
 
 int main()
 {
-    // EngineType type = (EngineType) 1; // == type = DIESEL
-
     const char* carModel = "Seat Leon";
     Car exampleCar = createCar(carModel, 3000, 22000, 360, DIESEL);
 
-    std::cout << "Model = " << exampleCar.model << std::endl;
+    std::cout << "Model = " << (void*) exampleCar.model << std::endl;
     std::cout << "Price = " << exampleCar.price << std::endl;
     std::cout << "Kilometers = " << exampleCar.kilometersReached << std::endl;
     std::cout << "Fuel = " << exampleCar.fuelConsumed << std::endl;
@@ -58,7 +64,7 @@ int main()
 
     std::cout << calculateFuelPer100km(exampleCar) << std::endl;
 
-    delete[] exampleCar.model;
+    // delete[] exampleCar.model;
 
     return 0;
 }
