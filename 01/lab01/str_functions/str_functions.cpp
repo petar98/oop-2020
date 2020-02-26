@@ -9,7 +9,6 @@
 
 int strlen(const char* str)
 {
-    // std::cout << (void*) str << std::endl;
     if (str == nullptr)
     {
         return -1;
@@ -56,7 +55,6 @@ void strcpy(char* destination, const char* source)
     
     if (destination == nullptr || source == nullptr)
     {
-        std::cout << (void*) destination << std::endl;
         return;
     }
 
