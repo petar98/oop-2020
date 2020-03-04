@@ -3,11 +3,10 @@
 
 int main()
 {
-    Cup* myCup;
-    myCup = new Cup;
+    Cup myCup;
 
-    myCup->setCapacity(250);
-    myCup->setQuantity(123);
+    myCup.setCapacity(250);
+    myCup.setQuantity(123);
 
     myCup.setCapacity(250);
     myCup.setQuantity(125);
