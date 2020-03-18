@@ -7,23 +7,19 @@ Complex::Complex(const double real, const double imaginary)
 {
 }
 
-// void Complex::makeComplex(const double real, const double imaginary)
-// {
-//     this->real = real;
-//     this->imaginary = imaginary;
-// }
-
-void Complex::addComplex(const Complex& other)
+Complex Complex::operator+(const Complex& other)
 {
-    this->real += other.real;
-    this->imaginary += other.imaginary;
+    Complex result(this->real + other.real, this->imaginary + other.imaginary);
+    return result;
 }
 
-void Complex::productComplex(const Complex& other)
+Complex Complex::operator*(const Complex& other)
 {
     const double oldReal = this->real;
-    this->real = (this->real * other.real) - (this->imaginary * other.imaginary);
-    this->imaginary = (oldReal * other.imaginary) + (this->imaginary * other.real);
+    Complex result((this->real * other.real) - (this->imaginary * other.imaginary),
+                    (oldReal * other.imaginary) + (this->imaginary * other.real));
+
+    return result;
 }
 
 void Complex::print() const
