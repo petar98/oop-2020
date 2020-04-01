@@ -18,6 +18,12 @@ public:
     T popBack();
     void printVector() const;
 
+    template<typename U>
+    friend std::ostream& operator<<(std::ostream&, const Vector<U>&);
+
+    template<typename U>
+    friend std::istream& operator>>(std::istream&, Vector<U>&);
+
 private:
     T* values;
     size_t size;
@@ -144,8 +150,37 @@ void Vector<T>::resize()
         deallocateValues();
         this->values = placeholder;
 
-        std::cout << "resized" << std::endl;
+        // std::cout << "resized" << std::endl;
     }
+}
+
+template<typename U>
+std::ostream& operator<<(std::ostream& os, const Vector<U>& v)
+{
+    for (size_t i = 0; i < v.size; i++)
+    {
+        os << v.values[i] << " ";
+    }
+    os << "\n";
+    
+    return os;
+}
+
+template<typename U>
+std::istream& operator>>(std::istream& is, Vector<U>& v)
+{
+    int number = 0;
+    std::cout << "Enter number of elements: ";
+    is >> number;
+
+    for (size_t i = 0; i < number; i++)
+    {
+        U temp;
+        is >> temp;
+        v.pushBack(temp);
+    }
+
+    return is;    
 }
 
 #endif // VECTOR_HPP

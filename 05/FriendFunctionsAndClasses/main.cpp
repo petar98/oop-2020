@@ -4,12 +4,24 @@ class Display;    // forward declaration
 
 class Phone
 {
+private:
+    Display d;      // compisition
+    int value;
 public:
-    void showDisplay(Display& d);
-    unsigned getDisplayWidth(Display& d);
-    unsigned getDisplayHeigth(Display& d);
-    void f(Display& d);
+    void showDisplay(Display& d)
+    {
+        d.heigth = 9;
+    }
+    unsigned getDisplayWidth(Display& d)
+    {
+        d.width = 12;
+    }
+    unsigned getDisplayHeigth(Display& d)
+    {
+        d.heigth = 12;
+    }
 };
+
 
 class Display
 {
@@ -19,11 +31,11 @@ public:
         , heigth(h)
     {
     }
+    // friend class Phone;
     friend class Phone;
 private:
     unsigned width;
     unsigned heigth;
-
 };
 
 void Phone::showDisplay(Display& d)
@@ -41,10 +53,10 @@ unsigned Phone::getDisplayHeigth(Display& d)
     return d.heigth;
 }
 
-// void showDisplay(Display& d)
-// {
-//     std::cout << d.width << " " << d.heigth << std::endl;
-// }
+void showDisplay(Display& d)
+{
+    std::cout << d.width << " " << d.heigth << std::endl;
+}
 
 int main()
 {
