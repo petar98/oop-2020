@@ -5,20 +5,29 @@
 int main()
 {
 
-    Vector<int> v;
-    std::cin >> v;
-    std::cout << v;
-    std::cin >> v;
+    // Vector<int> v;
+    // std::cin >> v;
+    // std::cout << v;
+    // std::cin >> v;
 
-    std::ofstream myFile;
-    myFile.open("testing-file.txt", std::ios::out | std::ios::trunc);
-    if (myFile.is_open())
+    // std::ofstream myFile;
+    // myFile.open("testing-file.txt", std::ios::out | std::ios::trunc);
+    // if (myFile.is_open())
+    // {
+    //     myFile << "Hello from the other side. \n";
+    //     myFile << v;
+    //     myFile.close();
+    // }   
+
+
+    Vector<char> myString;
+    char temp = '\0';
+    while (std::cin.get(temp) && temp != '\n')
     {
-        myFile << "Hello from the other side. \n";
-        myFile << v;
-        myFile.close();
-    }   
-    
+        myString.pushBack(temp);
+    }
+
+    myString.printVector();
 
     // std::ifstream otherFile;
     // otherFile.open("testing-file.txt", std::ios::in);
