@@ -24,5 +24,7 @@ int main()
 
     delete weatherStation;
     delete weatherDisplay;
+    delete secondWeatherDisplay;
+    
     return 0;
 }
